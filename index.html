@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>День рождения · 28 сентября</title>
+  <meta name="description" content="Приглашение на день рождения 28 сентября">
+  <meta property="og:title" content="Приглашение на день рождения">
+  <meta property="og:description" content="28 сентября. Буду ждать тебя!">
+  <meta name="theme-color" content="#E8ECE4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <div class="demo-banner" id="demoBanner" hidden>
+    Демо-режим: ответы сохраняются только на этом устройстве. Подключите таблицу по инструкции.
+  </div>
+
+  <header class="hero">
+    <div class="blob blob-a" aria-hidden="true"></div>
+    <div class="blob blob-b" aria-hidden="true"></div>
+
+    <div class="wrap hero-inner">
+      <p class="eyebrow rise" style="--d:0">Приглашение</p>
+
+      <h1 class="hero-title">
+        <span class="hero-num rise" style="--d:1">28</span>
+        <span class="hero-month rise" style="--d:2">сентября</span>
+        <span class="sr-only">— день рождения</span>
+      </h1>
+
+      <div class="hero-text">
+        <p class="hero-kicker rise" style="--d:3">День рождения<span id="weekday"></span></p>
+        <p class="hero-greeting rise" style="--d:4" id="greeting"></p>
+        <div class="hero-actions rise" style="--d:5">
+          <a class="btn btn-solid" href="#rsvp">Ответить на приглашение</a>
+          <a class="btn btn-ghost" href="#wishlist">Виш-лист</a>
+        </div>
+      </div>
+    </div>
+
+    <a class="scroll-hint rise" style="--d:7" href="#details" aria-label="Листать вниз"><span></span></a>
+  </header>
+
+  <main>
+
+    <section class="section" id="details">
+      <div class="wrap grid">
+        <h2 class="label reveal">Детали</h2>
+        <div class="content">
+          <dl class="facts">
+            <div class="fact reveal">
+              <dt>Когда</dt>
+              <dd id="whenValue">28 сентября</dd>
+              <dd class="fact-sub" id="whenSub"></dd>
+            </div>
+            <div class="fact reveal">
+              <dt>Где</dt>
+              <dd id="whereValue"></dd>
+              <dd class="fact-sub" id="whereSub"></dd>
+            </div>
+            <div class="fact reveal" id="noteFact" hidden>
+              <dt>Заметка</dt>
+              <dd class="fact-note" id="noteValue"></dd>
+            </div>
+          </dl>
+
+          <div class="countdown reveal" id="countdown" aria-live="off">
+            <div class="cd-cell"><span class="cd-num" id="cdDays">0</span><span class="cd-unit">дней</span></div>
+            <div class="cd-cell"><span class="cd-num" id="cdHours">00</span><span class="cd-unit">часов</span></div>
+            <div class="cd-cell"><span class="cd-num" id="cdMins">00</span><span class="cd-unit">минут</span></div>
+            <div class="cd-cell"><span class="cd-num" id="cdSecs">00</span><span class="cd-unit">секунд</span></div>
+          </div>
+          <p class="today reveal" id="todayMsg" hidden>Сегодня тот самый день</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="wishlist">
+      <div class="wrap grid">
+        <h2 class="label reveal">Виш-лист</h2>
+        <div class="content">
+          <p class="lead reveal">Лучший подарок — твоё присутствие. Но если хочется порадовать чем-то ещё, вот несколько идей.</p>
+          <p class="hint reveal">Отметь подарок, который выбираешь, и он станет недоступен для остальных. Так подарки не повторятся.</p>
+          <ul class="gifts" id="gifts"></ul>
+          <p class="status" id="giftStatus" role="status"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rsvp">
+      <div class="wrap grid">
+        <h2 class="label reveal">Ответ</h2>
+        <div class="content">
+          <p class="lead reveal">Дай знать, ждать ли тебя.</p>
+
+          <form class="form reveal" id="rsvpForm" novalidate>
+            <div class="field">
+              <label for="rsvpName">Имя</label>
+              <input type="text" id="rsvpName" name="name" maxlength="60" autocomplete="name" placeholder="Как тебя зовут" required>
+            </div>
+
+            <fieldset class="field choice">
+              <legend>Придёшь?</legend>
+              <div class="choice-row">
+                <label class="pill">
+                  <input type="radio" name="attending" id="attYes" value="yes" required>
+                  <span>Приду</span>
+                </label>
+                <label class="pill">
+                  <input type="radio" name="attending" id="attNo" value="no">
+                  <span>Не смогу</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="rsvpMessage">Что-нибудь ещё <span class="optional">необязательно</span></label>
+              <textarea id="rsvpMessage" name="message" rows="3" maxlength="600" placeholder="Пожелание, вопрос, с кем придёшь, аллергии…"></textarea>
+            </div>
+
+            <p class="status" id="rsvpStatus" role="status"></p>
+            <button class="btn btn-solid btn-wide" type="submit" id="rsvpSubmit">Отправить ответ</button>
+          </form>
+
+          <div class="thanks" id="thanks" hidden>
+            <svg class="check" viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="24" r="22"/>
+              <path d="M15 24.5l6.2 6.2L33.5 18"/>
+            </svg>
+            <p class="thanks-title" id="thanksTitle"></p>
+            <p class="thanks-text" id="thanksText"></p>
+            <button class="link-btn" type="button" id="editRsvp">Изменить ответ</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p class="footer-line">До встречи 28 сентября</p>
+      <p class="footer-sign" id="sign" hidden></p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
